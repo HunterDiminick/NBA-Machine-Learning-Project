@@ -1,22 +1,25 @@
-# NBA-Machine-Learning-Project
-Repository with various methods attempting to predict NBA winners in R.
-Important to note, the data that I created these models with was averages over each team's three prior games, either away
-or at home. For example, if the Lakers were playing away at Detroit, the Lakers stats were their averages over their last 
-three away matchups, while the Pistons stats were their averages over their last three home games. Calculating these averages
-involved scraping the game data for each game of the 2022-2023 season, and running a python script that produced a new 
-dataset. 
+# NBA Game Outcome Predictive Models in R
 
-Another important thing to note, the NBA regular season has 1230 games. In the preprocessing of the data I deleted 136 games 
-from the start and end of the season, given irrecularities found during these periods. At the end of the season, some teams
-have already made the playoffs and therefore aren't incentivized to try as hard, while on the other hand some teams are 
-out of contention and tanking. I had no way to quantify "effort", so I decided to eliminate games from these two periods. 
+This repository contains R scripts that aim to predict NBA game outcomes using various statistical models and machine learning techniques. The predictions are based on historical game data from the 2022-2023 NBA season, specifically utilizing averages from each team's three prior games, either away or at home.
 
-I uploaded three different files, each with the same objective but utilizing various methods. The first model, 
-Basic_Classification.R, attempts to classify whether the home team will win (1) or lose (0) using a random forest classification
-model. The second model, labeled Regression_Margin_Victory.R, creates a new field in preprocessing called Margin, which is the 
-response variable that the model makes predictions on. The random forest model created makes predictions on the margin of victory
-relative to the home team, from which we can translate into a simple winner, and determine the model accuracy. The last file, 
-Regression_Point_Total.R, is the aggregation of two different regression Random Forest models, each of which attempt to predict
-the total points for the home or away team. After training each of the models on the same set of test data, the model makes 
-predictions on the home and away points for each game. Using these predictions, I then created a simple win-loss category
-relative to the home team, and compared it to who won each matchup to determine the accuracy of the model. 
+## Data Preparation
+
+The dataset used for training these models was created by scraping game data for all 1230 NBA regular season games of the 2022-2023 season. To ensure data quality and consistency, a Python script was employed to preprocess and aggregate this data.
+
+Notably, during the data preprocessing phase, 136 games from the beginning and end of the season were excluded. These exclusions were made due to irregularities observed during these periods. Teams that had already secured playoff berths might not exert maximum effort, while teams that were out of playoff contention might be strategically "tanking." To eliminate the potential impact of such factors, these games were removed from the dataset.
+
+## Model Descriptions
+
+### Model 1: Basic Classification (Basic_Classification.R)
+
+This model employs a Random Forest classification algorithm to predict whether the home team will win (1) or lose (0) a given NBA game. It is designed to provide a binary outcome prediction.
+
+### Model 2: Margin of Victory Regression (Regression_Margin_Victory.R)
+
+In this model, a new field called "Margin" is introduced during preprocessing. The model utilizes a Random Forest regression approach to predict the margin of victory relative to the home team. By translating these margin predictions into simple win-loss outcomes, the model's accuracy can be evaluated.
+
+### Model 3: Point Total Regression (Regression_Point_Total.R)
+
+This model combines two distinct regression Random Forest models, each dedicated to predicting the total points scored by either the home or away team. After training both models on the same test dataset, they make predictions for home and away team points in each game. These predictions are then used to determine a win-loss category relative to the home team, and the model's accuracy is assessed based on the actual game outcomes.
+
+Feel free to explore these scripts to gain insights into the predictive capabilities of each model and adapt them to your specific requirements.
