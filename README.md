@@ -22,4 +22,12 @@ In this model, a new field called "Margin" is introduced during preprocessing. T
 
 This model combines two distinct regression Random Forest models, each dedicated to predicting the total points scored by either the home or away team. After training both models on the same test dataset, they make predictions for home and away team points in each game. These predictions are then used to determine a win-loss category relative to the home team, and the model's accuracy is assessed based on the actual game outcomes.
 
-Feel free to explore these scripts to gain insights into the predictive capabilities of each model and adapt them to your specific requirements.
+## Results and Future Considerations
+
+Among the three models evaluated, Model 2 emerged as the top performer overall. The challenge in comparing these models lies in the diverse nature of their tasks; Model 1, a classification model, operates on a different scale than the other two, measured by out-of-bounds RMSE.
+
+When focusing on predicting home or away wins, Model 2 showcased remarkable accuracy. It successfully predicted outcomes with a precision of 71.9% for home team victories and 68.75% for away team victories. This balanced accuracy across both scenarios indicates that the model is not overfit to predict specific outcomes.
+
+In addition to accuracy, exploring metrics like precision, recall, or F1 score could provide a more nuanced understanding of each model's performance. This context is crucial for appreciating the practical implications of their predictive capabilities when deployed against upcoming matchups and unseen scenarios.
+
+Feel free to explore these scripts to gain insights into the predictive capabilities of each model and adapt them to your specific requirements. Keep in mind that accuracies may vary to the stochastic nature of Random Forest models.
